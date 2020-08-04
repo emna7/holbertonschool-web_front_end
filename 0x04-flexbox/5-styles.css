@@ -174,16 +174,16 @@
   
   /* Grid
       ============================= */
+
   .row {
     display: flex;
   }
- 
+  
   ul.row {
     margin: -1rem;
     padding: 0;
     list-style: none;
   }
-
   
   [class*='col-'] {
     margin: 1rem;
@@ -199,10 +199,6 @@
   
   /* Navbar
       ============================= */
-  
-  .navbar-menu {
-    float: right;
-  }
   
   .nav {
     margin: 0;
@@ -256,7 +252,7 @@
          z-index: 3;
          background: transparent !important;
   }
-  
+
   .header-container {
     display: flex;
     justify-content: space-between;
@@ -360,14 +356,16 @@
     padding: 10rem 40rem 2rem 0;
   }
   
-  /* Section Latest news ============================= */
-
+  /* Section Latest news
+    ============================= */
+  
   .section-latest-news .row {
     flex-direction: row-reverse;
   }
 
-  /* Section SERVICES ============================= */
-
+  /* Section SERVICES
+    ============================= */
+  
   .section-services .row {
     flex-wrap: wrap;
   }
