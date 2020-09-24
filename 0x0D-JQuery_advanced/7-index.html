@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+  <meta charset="utf-8" />
+  <title>Advanced jQuery</title>
+
+</head>
+
+<body>
+
+</body>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script type="application/javascript">
+  function createSearchForm () {
+    $('body').append(
+      '<input type="text" id="search"></input>',
+      '<input type="submit" id="submit-btn"></input>',
+      '<ul></ul>');
+    $('#submit-btn').click(function () {
+      const query = $('#search').val();
+      queryWikipedia(query);
+    });
+  }
+
+  function addNewArticle (id, title, snippet) {
+    $('ul').append('<li></li>');
+    $('ul > li:last').append(
+      `<p><span>${id} - <b>${title}</b></span></p>`,
+      `<p>${snippet}</p>`);
+  }
+
+  function queryWikipedia (search) {
+    $.get('https://en.wikipedia.org/w/api.php', {
+      action: 'query',
+      list: 'search',
+      srsearch: search,
+      format: 'json',
+      origin: '*'
+    }).done(function (data) {
+      data.query.search.forEach(function (item) {
+        addNewArticle(item.pageid, item.title, item.snippet);
+      })
+    })
+  }
+
+  $(document).ready(createSearchForm);
+</script>
+
+</html>
