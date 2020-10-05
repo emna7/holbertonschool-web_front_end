@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>session storage</title>
+	</head>
+	<script type="application/javascript">
+		let availableItems = ['Shampoo', 'Soap', 'Sponge', 'Water'];
+		if (typeof(Storage) !== undefined) {
+			createStore();
+			displayCart();
+		} else {
+			alert("Sorry, your browser does not support Web storage. Try again with a better one")
+		}
+		function addItemToCart {
+			sessionStorage.setItem(item, true);
+		}
+		function createStore() {
+			let ul = document.createElement('ul');
+			for (let i = 0; i < availableItems.length; i++) {
+				let item = document.cretaeElement('li');
+				item.onclick = function () {
+					addItemToCart(availableItems[i]);
+				}
+				item.appendChild(document.createTextNode(availableItems[i]));
+				ul.appendChild(item);
+			}
+			document.body.append(ul);
+		}
+		function displayCart() {
+			if (sessionStorage.length) {
+				let doc = document.createElement('p');
+				doc.innerHTML = `You previously had ${sessionStorage.length} items in your cart`;
+				document.body.append(doc);
+			}
+		}
+	</script>
+	<body>
+	</body>
+</html>
